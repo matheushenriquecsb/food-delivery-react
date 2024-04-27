@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import "./ExploreMenu.css";
 import { menu_list } from "../../assets/assets";
 
