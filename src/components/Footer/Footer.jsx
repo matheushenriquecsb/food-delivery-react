@@ -6,7 +6,7 @@ const Footer = () => {
     <div className="footer" id="footer">
       <div className="footer-content">
         <div className="footer-content-left">
-          <img src={assets.logo} alt="" />
+          <img src={assets.logo} alt="logo" />
           <p>
             Choose from a diverse menu featuring a detectable array of dishes
             crafted with the finest ingredientes and culinary expertise.
