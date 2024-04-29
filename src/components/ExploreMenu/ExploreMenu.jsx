@@ -1,4 +1,3 @@
-/* eslint-disable react/prop-types */
 import "./ExploreMenu.css";
 import { menu_list } from "../../assets/assets";
 
@@ -27,7 +26,7 @@ const ExploreMenu = ({ category, setCategory }) => {
               <img
                 className={category === item.menu_name ? "active" : ""}
                 src={item.menu_image}
-                alt=""
+                alt="food-image"
               />
               <p>{item.menu_name}</p>
             </div>
