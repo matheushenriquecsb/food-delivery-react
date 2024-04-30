@@ -30,7 +30,7 @@ const Footer = () => {
           <h2>Get in Touch</h2>
           <ul>
             <li>719919190098</li>
-            <li>teste@test.com</li>
+            <li>tomato@tomato.com</li>
           </ul>
         </div>
       </div>
