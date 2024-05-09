@@ -1,12 +1,31 @@
 import { useContext } from "react";
+import axios from "axios";
+
 import "./Cart.css";
 import { StoreContext } from "../../context/StoreContext";
 import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 
 const Cart = () => {
-  const { food_list, cartItems, removeFromCart, getTotalCartAmout } =
+  const { foodList, cartItems, removeFromCart, getTotalCartAmout, token } =
     useContext(StoreContext);
+
   const navigate = useNavigate();
+
+  const handleCartItems = async () => {
+    if (!token) {
+      return toast.error("Your are not authorized, please login");
+    } else {
+      const res = await axios.post(
+        `${import.meta.env.VITE_API_URL}/cart/add`,
+        { cartItems },
+        { headers: { token: token } }
+      );
+      console.log(res);
+    }
+    navigate("/order");
+  };
+
   return (
     <div className="cart">
       <div className="cart-items">
@@ -20,11 +39,14 @@ const Cart = () => {
         </div>
         <br />
         <hr />
-        {food_list.map((item, index) => {
+        {foodList.map((item, index) => {
           if (cartItems[item._id] > 0) {
             return (
               <div className="cart-items-title cart-items-item" key={index}>
-                <img src={item.image} alt="foofd" />
+                <img
+                  src={`${import.meta.env.VITE_API_URL}/uploads/${item.image}`}
+                  alt="food"
+                />
                 <p>{item.name}</p>
                 <p>R$ {item.price}</p>
                 <p>{cartItems[item._id]}</p>
@@ -56,9 +78,7 @@ const Cart = () => {
               <p>R$ {getTotalCartAmout() + 2}</p>
             </div>
           </div>
-          <button onClick={() => navigate("/order")}>
-            Proceed To Checkout
-          </button>
+          <button onClick={handleCartItems}>Proceed To Checkout</button>
         </div>
         <div className="cart-promocode">
           <div>

@@ -1,13 +1,15 @@
+import { useState } from "react";
 import { Route, Routes } from "react-router-dom";
-import "../src/index.css";
-import Footer from "./components/Footer/Footer";
-import Navbar from "./components/Navbar/Navbar";
-import Login from "./components/Login/Login";
+import { ToastContainer } from "react-toastify";
 
+import "react-toastify/dist/ReactToastify.css";
+import "./index.css";
+import Footer from "./components/Footer/Footer";
+import Login from "./components/Login/Login";
+import Navbar from "./components/Navbar/Navbar";
 import Cart from "./pages/Cart/Cart";
 import Home from "./pages/Home/Home";
 import PlaceOrder from "./pages/PlaceOrder/PlaceOrder";
-import { useState } from "react";
 
 const App = () => {
   const [showLogin, setShowLogin] = useState(false);
@@ -15,6 +17,7 @@ const App = () => {
     <>
       {showLogin ? <Login setShowLogin={setShowLogin} /> : <></>}
       <div className="app">
+        <ToastContainer />
         <Navbar setShowLogin={setShowLogin} />
         <Routes>
           <Route path="/" element={<Home />} />
