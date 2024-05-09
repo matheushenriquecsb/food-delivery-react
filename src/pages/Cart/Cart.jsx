@@ -1,13 +1,30 @@
 import { useContext } from "react";
+import axios from "axios";
+
 import "./Cart.css";
 import { StoreContext } from "../../context/StoreContext";
 import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 
 const Cart = () => {
-  const { foodList, cartItems, removeFromCart, getTotalCartAmout } =
+  const { foodList, cartItems, removeFromCart, getTotalCartAmout, token } =
     useContext(StoreContext);
 
   const navigate = useNavigate();
+
+  const handleCartItems = async () => {
+    if (!token) {
+      return toast.error("Your are not authorized, please login");
+    } else {
+      const res = await axios.post(
+        `${import.meta.env.VITE_API_URL}/cart/add`,
+        { cartItems },
+        { headers: { token: token } }
+      );
+      console.log(res);
+    }
+    navigate("/order");
+  };
 
   return (
     <div className="cart">
@@ -61,9 +78,7 @@ const Cart = () => {
               <p>R$ {getTotalCartAmout() + 2}</p>
             </div>
           </div>
-          <button onClick={() => navigate("/order")}>
-            Proceed To Checkout
-          </button>
+          <button onClick={handleCartItems}>Proceed To Checkout</button>
         </div>
         <div className="cart-promocode">
           <div>

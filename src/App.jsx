@@ -1,6 +1,8 @@
-import { Route, Routes } from "react-router-dom";
 import { useState } from "react";
+import { Route, Routes } from "react-router-dom";
+import { ToastContainer } from "react-toastify";
 
+import "react-toastify/dist/ReactToastify.css";
 import "./index.css";
 import Footer from "./components/Footer/Footer";
 import Login from "./components/Login/Login";
@@ -15,6 +17,7 @@ const App = () => {
     <>
       {showLogin ? <Login setShowLogin={setShowLogin} /> : <></>}
       <div className="app">
+        <ToastContainer />
         <Navbar setShowLogin={setShowLogin} />
         <Routes>
           <Route path="/" element={<Home />} />
