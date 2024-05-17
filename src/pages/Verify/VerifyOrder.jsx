@@ -18,7 +18,6 @@ const VerifyOrder = () => {
       }
     );
 
-    console.log(res.data);
     if (res.data.success) {
       navigate("/my-orders");
     } else {
