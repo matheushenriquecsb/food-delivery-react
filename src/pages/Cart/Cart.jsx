@@ -16,12 +16,11 @@ const Cart = () => {
     if (!token) {
       return toast.error("Your are not authorized, please login");
     } else {
-      const res = await axios.post(
+      await axios.post(
         `${import.meta.env.VITE_API_URL}/cart/add`,
         { cartItems },
         { headers: { token: token } }
       );
-      console.log(res);
     }
     navigate("/order");
   };
