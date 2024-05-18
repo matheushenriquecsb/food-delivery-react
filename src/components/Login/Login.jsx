@@ -3,6 +3,7 @@ import { useContext, useState } from "react";
 
 import { assets } from "../../assets/assets";
 import { StoreContext } from "../../context/StoreContext";
+import { toast } from "react-toastify";
 import "./Login.css";
 
 const Login = ({ setShowLogin }) => {
@@ -21,27 +22,39 @@ const Login = ({ setShowLogin }) => {
     setData((data) => ({ ...data, [name]: value }));
   };
 
-  const onLogin = async (e) => {
-    e.preventDefault();
+  const signUpUser = async () => {
+    const res = await axios.post(
+      `${import.meta.env.VITE_API_URL}/users/register`,
+      data
+    );
+    if (res.status === 201) {
+      setCurrState("Login");
+    }
+  };
 
-    if (currState === "Sign Up") {
-      const res = await axios.post(
-        `${import.meta.env.VITE_API_URL}/users/register`,
-        data
-      );
-      if (res.status === 201) {
-        setCurrState("Login");
-      }
-    } else {
+  const loginUser = async () => {
+    try {
       const res = await axios.post(
         `${import.meta.env.VITE_API_URL}/users/login`,
         [data.email, data.password]
       );
+
       if (res.status === 201) {
         setToken(res.data.access_token);
         localStorage.setItem("token", res.data.access_token);
         setShowLogin(false);
       }
+    } catch (error) {
+      return toast.error(error.response.data.message);
+    }
+  };
+
+  const onLogin = async (e) => {
+    e.preventDefault();
+    if (currState === "Sign Up") {
+      await signUpUser();
+    } else {
+      await loginUser();
     }
   };
 
