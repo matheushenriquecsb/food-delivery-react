@@ -32,7 +32,7 @@ const StoreContextProvider = (props) => {
   };
 
   const fetchFoodList = async () => {
-    const res = await axios.get(`${import.meta.env.VITE_API_URL}/food`);
+    const res = await axios.get("https://food-app-backend.adaptable.app/food");
     setFoodList(res.data);
   };
 

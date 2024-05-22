@@ -17,7 +17,7 @@ const Cart = () => {
       return toast.error("Your are not authorized, please login");
     }
     const res = await axios.post(
-      `${import.meta.env.VITE_API_URL}/cart/add`,
+      "https://food-app-backend.adaptable.app/cart/add",
       { cartItems },
       { headers: { token: token } }
     );
@@ -47,7 +47,7 @@ const Cart = () => {
             return (
               <div className="cart-items-title cart-items-item" key={index}>
                 <img
-                  src={`${import.meta.env.VITE_API_URL}/uploads/${item.image}`}
+                  src={`https://food-app-backend.adaptable.app/uploads/${item.image}`}
                   alt="food"
                 />
                 <p>{item.name}</p>
