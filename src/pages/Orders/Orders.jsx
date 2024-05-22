@@ -17,6 +17,7 @@ const Orders = () => {
     );
     setData(Array(res.data));
   };
+
   useEffect(() => {
     if (token) {
       fetchOrder();

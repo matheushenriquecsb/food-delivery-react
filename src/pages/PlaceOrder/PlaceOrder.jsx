@@ -24,9 +24,9 @@ const PlaceOrder = () => {
     e.preventDefault();
     let orderItems = [];
     foodList.map((item) => {
-      if (cartItems[item._id] > 0) {
+      if (cartItems[item.id] > 0) {
         let itemInfo = item;
-        itemInfo["quantity"] = cartItems[item._id];
+        itemInfo["quantity"] = cartItems[item.id];
         orderItems.push(itemInfo);
       }
     });
