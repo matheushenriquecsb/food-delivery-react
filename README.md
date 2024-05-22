@@ -1,8 +1,15 @@
 ## Food Delivery Order Website
 
-### Tech Stacks
+[![Generic badge](https://img.shields.io/badge/WEBSITE-CLICK-HERE.svg)](https://delivery-food-order.netlify.app)
 
-[![React](https://img.shields.io/badge/-React-333333?style=flat&logo=react)](https://pt-br.reactjs.org)
+ 
+## Resume
+
+<p>Application for ordering food, containing a login and registration system, once logged in it is possible to place orders and make payments through Stripe</p>
+
+## Tech Stacks
+
+[![React](https://img.shields.io/badge/-React-333333?style=flat&logo=react)](https://pt-br.reactjs.org) 
 [![CSS3](https://img.shields.io/badge/-CSS3-333333?style=flat&logo=css3&logoColor=blue)](https://developer.mozilla.org/pt-BR/docs/Web/CSS)
 
 ## Instalação
