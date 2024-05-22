@@ -38,7 +38,7 @@ const PlaceOrder = () => {
     };
 
     let res = await axios.post(
-      `${import.meta.env.VITE_API_URL}/order`,
+      "https://food-app-backend.adaptable.app/order",
       { orderData },
       { headers: { token: token } }
     );

@@ -11,7 +11,7 @@ const Orders = () => {
 
   const fetchOrder = async () => {
     const res = await axios.post(
-      `${import.meta.env.VITE_API_URL}/order/my-orders`,
+      "https://food-app-backend.adaptable.app/order/my-orders",
       {},
       { headers: { token: token } }
     );

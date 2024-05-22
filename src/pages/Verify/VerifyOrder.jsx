@@ -11,7 +11,7 @@ const VerifyOrder = () => {
 
   const verifyPayment = async () => {
     const res = await axios.post(
-      `${import.meta.env.VITE_API_URL}/order/verify`,
+      "https://food-app-backend.adaptable.app/order/verify",
       {
         success,
         orderId,

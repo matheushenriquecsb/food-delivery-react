@@ -25,7 +25,7 @@ const Login = ({ setShowLogin }) => {
   const signUpUser = async () => {
     try {
       const res = await axios.post(
-        `${import.meta.env.VITE_API_URL}/users/register`,
+        "https://food-app-backend.adaptable.app/users/register",
         data
       );
       if (res.status === 201) {
@@ -39,7 +39,7 @@ const Login = ({ setShowLogin }) => {
   const loginUser = async () => {
     try {
       const res = await axios.post(
-        `${import.meta.env.VITE_API_URL}/users/login`,
+        "https://food-app-backend.adaptable.app/users/login",
         [data.email, data.password]
       );
 
