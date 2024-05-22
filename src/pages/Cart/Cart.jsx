@@ -15,13 +15,17 @@ const Cart = () => {
   const handleCartItems = async () => {
     if (!token) {
       return toast.error("Your are not authorized, please login");
-    } else {
-      await axios.post(
-        `${import.meta.env.VITE_API_URL}/cart/add`,
-        { cartItems },
-        { headers: { token: token } }
-      );
     }
+    const res = await axios.post(
+      `${import.meta.env.VITE_API_URL}/cart/add`,
+      { cartItems },
+      { headers: { token: token } }
+    );
+
+    if (res.data.error) {
+      return toast.error("The card is empty! Please insert any item");
+    }
+
     navigate("/order");
   };
 
@@ -39,7 +43,7 @@ const Cart = () => {
         <br />
         <hr />
         {foodList.map((item, index) => {
-          if (cartItems[item._id] > 0) {
+          if (cartItems[item.id] > 0) {
             return (
               <div className="cart-items-title cart-items-item" key={index}>
                 <img
@@ -48,9 +52,9 @@ const Cart = () => {
                 />
                 <p>{item.name}</p>
                 <p>R$ {item.price}</p>
-                <p>{cartItems[item._id]}</p>
-                <p>{item.price * cartItems[item._id]}</p>
-                <p onClick={() => removeFromCart(item._id)} className="cross">
+                <p>{cartItems[item.id]}</p>
+                <p>{item.price * cartItems[item.id]}</p>
+                <p onClick={() => removeFromCart(item.id)} className="cross">
                   x
                 </p>
               </div>
