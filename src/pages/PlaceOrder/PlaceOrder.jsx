@@ -1,8 +1,9 @@
+import axios from "axios";
 import { useContext, useState } from "react";
+import { toast } from "react-toastify";
+import Loading from "../../components/Loading/Loading";
 import { StoreContext } from "../../context/StoreContext";
 import "./PlaceOrder.css";
-import axios from "axios";
-import { toast } from "react-toastify";
 
 const PlaceOrder = () => {
   const { getTotalCartAmout, foodList, cartItems, token } =
@@ -19,6 +20,7 @@ const PlaceOrder = () => {
     country: "",
     phone: "",
   });
+  const [loading, setLoading] = useState(false);
 
   const placeOrder = async (e) => {
     e.preventDefault();
@@ -37,6 +39,7 @@ const PlaceOrder = () => {
       amount: getTotalCartAmout() + 2,
     };
 
+    setLoading(true);
     let res = await axios.post(
       "https://food-app-backend.adaptable.app/order",
       { orderData },
@@ -44,9 +47,11 @@ const PlaceOrder = () => {
     );
 
     if (res.data.success) {
+      setLoading(false);
       const { session_url } = res.data;
       window.location.replace(session_url);
     } else {
+      setLoading(false);
       return toast.error("Error: Something Wrong");
     }
   };
@@ -165,7 +170,7 @@ const PlaceOrder = () => {
               <p>R$ {getTotalCartAmout() + 2}</p>
             </div>
           </div>
-          <button>Proceed To Payment</button>
+          <button>{loading ? <Loading /> : "Proceed To Payment"}</button>
         </div>
       </div>
     </form>

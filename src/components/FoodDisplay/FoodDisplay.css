@@ -14,3 +14,15 @@
   gap: 30px;
   row-gap: 50px;
 }
+
+.loading-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 300px;  
+}
+
+.loading-icon {
+  font-size: 48px;  
+  color: #1890ff;  
+}

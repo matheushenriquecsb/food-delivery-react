@@ -7,6 +7,7 @@ const StoreContextProvider = (props) => {
   const [cartItems, setCartItems] = useState({});
   const [token, setToken] = useState("");
   const [foodList, setFoodList] = useState([]);
+  const [loading, setLoading] = useState(false);
 
   const addToCart = (itemId) => {
     if (!cartItems[itemId]) {
@@ -32,8 +33,10 @@ const StoreContextProvider = (props) => {
   };
 
   const fetchFoodList = async () => {
+    setLoading(true);
     const res = await axios.get("https://food-app-backend.adaptable.app/food");
     setFoodList(res.data);
+    setLoading(false);
   };
 
   useEffect(() => {
@@ -55,6 +58,7 @@ const StoreContextProvider = (props) => {
     token,
     setToken,
     foodList,
+    loading,
   };
 
   return (
