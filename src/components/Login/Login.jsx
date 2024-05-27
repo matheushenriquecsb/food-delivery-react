@@ -5,11 +5,13 @@ import { assets } from "../../assets/assets";
 import { StoreContext } from "../../context/StoreContext";
 import { toast } from "react-toastify";
 import "./Login.css";
+import Loading from "../Loading/Loading";
 
 const Login = ({ setShowLogin }) => {
   const { setToken } = useContext(StoreContext);
 
   const [currState, setCurrState] = useState("Login");
+  const [loading, setLoading] = useState(false);
   const [data, setData] = useState({
     name: "",
     email: "",
@@ -24,10 +26,12 @@ const Login = ({ setShowLogin }) => {
 
   const signUpUser = async () => {
     try {
+      setLoading(true);
       const res = await axios.post(
         "https://food-app-backend.adaptable.app/users/register",
         data
       );
+      setLoading(false);
       if (res.status === 201) {
         setCurrState("Login");
       }
@@ -105,7 +109,13 @@ const Login = ({ setShowLogin }) => {
           />
         </div>
         <button type="submit">
-          {currState === "Sign Up" ? "Create Account" : "Login"}
+          {loading ? (
+            <Loading />
+          ) : currState === "Sign Up" ? (
+            "Create Account"
+          ) : (
+            "Login"
+          )}
         </button>
         <div className="login-condition">
           <input type="checkbox" required />

@@ -1,26 +1,30 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import axios from "axios";
 
-import "./Cart.css";
-import { StoreContext } from "../../context/StoreContext";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
+import Loading from "../../components/Loading/Loading";
+import { StoreContext } from "../../context/StoreContext";
+import "./Cart.css";
 
 const Cart = () => {
   const { foodList, cartItems, removeFromCart, getTotalCartAmout, token } =
     useContext(StoreContext);
 
-  const navigate = useNavigate();
+  const [loading, setLoading] = useState(false);
 
+  const navigate = useNavigate();
   const handleCartItems = async () => {
     if (!token) {
       return toast.error("Your are not authorized, please login");
     }
+    setLoading(true);
     const res = await axios.post(
       "https://food-app-backend.adaptable.app/cart/add",
       { cartItems },
       { headers: { token: token } }
     );
+    setLoading(false);
 
     if (res.data.error) {
       return toast.error("The card is empty! Please insert any item");
@@ -81,7 +85,9 @@ const Cart = () => {
               <p>R$ {getTotalCartAmout() + 2}</p>
             </div>
           </div>
-          <button onClick={handleCartItems}>Proceed To Checkout</button>
+          <button onClick={handleCartItems}>
+            {loading ? <Loading /> : "Proceed To Checkout"}
+          </button>
         </div>
         <div className="cart-promocode">
           <div>
