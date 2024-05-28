@@ -5,7 +5,7 @@ import { assets } from "../../assets/assets";
 import { StoreContext } from "../../context/StoreContext";
 import { toast } from "react-toastify";
 import "./Login.css";
-import Loading from "../Loading/Loading";
+import { LoadingOutlined } from "@ant-design/icons";
 
 const Login = ({ setShowLogin }) => {
   const { setToken } = useContext(StoreContext);
@@ -36,6 +36,12 @@ const Login = ({ setShowLogin }) => {
         setCurrState("Login");
       }
     } catch (error) {
+      setLoading(false);
+      if (Array.isArray(error.response.data.message)) {
+        error.response.data.message.forEach((errMsg) => {
+          return toast.error(errMsg);
+        });
+      }
       return toast.error(error.response.data.message);
     }
   };
@@ -110,7 +116,7 @@ const Login = ({ setShowLogin }) => {
         </div>
         <button type="submit">
           {loading ? (
-            <Loading />
+            <LoadingOutlined />
           ) : currState === "Sign Up" ? (
             "Create Account"
           ) : (

@@ -3,9 +3,9 @@ import axios from "axios";
 
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
-import Loading from "../../components/Loading/Loading";
 import { StoreContext } from "../../context/StoreContext";
 import "./Cart.css";
+import { LoadingOutlined } from "@ant-design/icons";
 
 const Cart = () => {
   const { foodList, cartItems, removeFromCart, getTotalCartAmout, token } =
@@ -27,6 +27,7 @@ const Cart = () => {
     setLoading(false);
 
     if (res.data.error) {
+      setLoading(false);
       return toast.error("The card is empty! Please insert any item");
     }
 
@@ -86,7 +87,7 @@ const Cart = () => {
             </div>
           </div>
           <button onClick={handleCartItems}>
-            {loading ? <Loading /> : "Proceed To Checkout"}
+            {loading ? <LoadingOutlined /> : "Proceed To Checkout"}
           </button>
         </div>
         <div className="cart-promocode">

@@ -1,9 +1,9 @@
 import axios from "axios";
 import { useContext, useState } from "react";
 import { toast } from "react-toastify";
-import Loading from "../../components/Loading/Loading";
 import { StoreContext } from "../../context/StoreContext";
 import "./PlaceOrder.css";
+import { LoadingOutlined } from "@ant-design/icons";
 
 const PlaceOrder = () => {
   const { getTotalCartAmout, foodList, cartItems, token } =
@@ -170,7 +170,9 @@ const PlaceOrder = () => {
               <p>R$ {getTotalCartAmout() + 2}</p>
             </div>
           </div>
-          <button>{loading ? <Loading /> : "Proceed To Payment"}</button>
+          <button>
+            {loading ? <LoadingOutlined /> : "Proceed To Payment"}
+          </button>
         </div>
       </div>
     </form>
