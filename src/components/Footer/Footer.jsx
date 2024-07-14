@@ -8,8 +8,8 @@ const Footer = () => {
         <div className="footer-content-left">
           <img src={assets.logo} alt="logo" />
           <p>
-            Choose from a diverse menu featuring a detectable array of dishes
-            crafted with the finest ingredientes and culinary expertise.
+            Escolha entre um menu diversificado com uma variedade detectável de pratos
+            elaborado com os melhores ingredientes e conhecimento culinário.
           </p>
           <div className="footer-social-icons">
             <img src={assets.facebook_icon} alt="facebook" />
@@ -21,13 +21,13 @@ const Footer = () => {
           <h2>Company</h2>
           <ul>
             <li>Home</li>
-            <li>About Us</li>
+            <li>Sobre nós</li>
             <li>Delivery</li>
             <li>Privacy Police</li>
           </ul>
         </div>
         <div className="footer-content-right">
-          <h2>Get in Touch</h2>
+          <h2>Entre em contato</h2>
           <ul>
             <li>719919190098</li>
             <li>tomato@tomato.com</li>
