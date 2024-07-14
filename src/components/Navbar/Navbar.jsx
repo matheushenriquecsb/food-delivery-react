@@ -42,14 +42,14 @@ const Navbar = ({ setShowLogin }) => {
           onClick={() => setMenu("mobile-app")}
           className={menu === "mobile-app" ? "active" : ""}
         >
-          mobile-app
+          mobile
         </a>
         <a
           href="#app-download"
           onClick={() => setMenu("contact-us")}
           className={menu === "contact-us" ? "active" : ""}
         >
-          contact us
+          entre em contato
         </a>
       </ul>
       <div className="navbar-right">
