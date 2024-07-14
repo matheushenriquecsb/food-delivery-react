@@ -8,7 +8,7 @@ const FoodDisplay = ({ category }) => {
   const { foodList, loading } = useContext(StoreContext);
   return (
     <div className="food-display" id="food-display">
-      <h2>Top dishes near you</h2>
+      <h2>Nossos pratos principais</h2>
       {loading ? (
         <Loading />
       ) : (
