@@ -39,11 +39,11 @@ const Cart = () => {
       <div className="cart-items">
         <div className="cart-items-title">
           <p>Items</p>
-          <p>Titles</p>
-          <p>Price</p>
-          <p>Quantity</p>
+          <p>Pratos</p>
+          <p>Preço</p>
+          <p>Quantidade</p>
           <p>Total</p>
-          <p>Remove</p>
+          <p>Remover</p>
         </div>
         <br />
         <hr />
@@ -69,7 +69,7 @@ const Cart = () => {
       </div>
       <div className="cart-bottom">
         <div className="cart-total">
-          <h2>Cart Total</h2>
+          <h2>Valores Carrinho</h2>
           <div>
             <div className="cart-total-details">
               <p>Subtotal</p>
@@ -77,7 +77,7 @@ const Cart = () => {
             </div>
             <hr />
             <div className="cart-total-details">
-              <p>Delivery Fee</p>
+              <p>Taxa de Entrega</p>
               <p>R$ {2}</p>
             </div>
             <hr />
@@ -87,15 +87,15 @@ const Cart = () => {
             </div>
           </div>
           <button onClick={handleCartItems}>
-            {loading ? <LoadingOutlined /> : "Proceed To Checkout"}
+            {loading ? <LoadingOutlined /> : "Seguir com o pedido"}
           </button>
         </div>
         <div className="cart-promocode">
           <div>
-            <p>If you have a promo code enter here</p>
+            <p>Insira aqui seu código promocional</p>
             <div className="cart-promocode-input">
-              <input type="text" placeholder="promo code" />
-              <button>Submit</button>
+              <input type="text" placeholder="código promocional" />
+              <button>Enviar</button>
             </div>
           </div>
         </div>
