@@ -65,12 +65,12 @@ const PlaceOrder = () => {
   return (
     <form className="place-order" onSubmit={placeOrder}>
       <div className="place-order-left">
-        <p className="title">Delivery Information</p>
+        <p className="title">Informações de Entrega</p>
         <div className="multi-fields">
           <input
             type="text"
             required
-            placeholder="First Name"
+            placeholder="Nome"
             name="firstName"
             onChange={onChangeHandler}
             value={data.firstName}
@@ -78,7 +78,7 @@ const PlaceOrder = () => {
           <input
             type="text"
             required
-            placeholder="Last Name"
+            placeholder="Sobrenome"
             name="lastName"
             onChange={onChangeHandler}
             value={data.lastName}
@@ -87,7 +87,7 @@ const PlaceOrder = () => {
         <input
           type="email"
           required
-          placeholder="Email address"
+          placeholder="Email"
           className="email"
           name="email"
           autoComplete="off"
@@ -97,7 +97,7 @@ const PlaceOrder = () => {
         <input
           type="text"
           required
-          placeholder="Street"
+          placeholder="Rua"
           className="street"
           name="street"
           onChange={onChangeHandler}
@@ -107,7 +107,7 @@ const PlaceOrder = () => {
           <input
             type="text"
             required
-            placeholder="City"
+            placeholder="Cidade"
             name="city"
             onChange={onChangeHandler}
             value={data.city}
@@ -115,7 +115,7 @@ const PlaceOrder = () => {
           <input
             type="text"
             required
-            placeholder="State"
+            placeholder="Estado"
             name="state"
             onChange={onChangeHandler}
             value={data.state}
@@ -125,7 +125,7 @@ const PlaceOrder = () => {
           <input
             type="text"
             required
-            placeholder="Zip Code"
+            placeholder="CEP"
             name="zipCode"
             onChange={onChangeHandler}
             value={data.zipCode}
@@ -133,7 +133,7 @@ const PlaceOrder = () => {
           <input
             type="text"
             required
-            placeholder="Country"
+            placeholder="País"
             name="country"
             autoComplete="off"
             onChange={onChangeHandler}
@@ -143,7 +143,7 @@ const PlaceOrder = () => {
         <input
           type="text"
           required
-          placeholder="Phone"
+          placeholder="Celular"
           className="phone"
           name="phone"
           autoComplete="off"
@@ -153,7 +153,7 @@ const PlaceOrder = () => {
       </div>
       <div className="place-order-right">
         <div className="cart-total">
-          <h2>Cart Total</h2>
+          <h2>Valor do Pedido</h2>
           <div>
             <div className="cart-total-details">
               <p>Subtotal</p>
@@ -161,7 +161,7 @@ const PlaceOrder = () => {
             </div>
             <hr />
             <div className="cart-total-details">
-              <p>Delivery Fee</p>
+              <p>Taxa de Entrega</p>
               <p>R$ {2}</p>
             </div>
             <hr />
@@ -171,7 +171,7 @@ const PlaceOrder = () => {
             </div>
           </div>
           <button>
-            {loading ? <LoadingOutlined /> : "Proceed To Payment"}
+            {loading ? <LoadingOutlined /> : "Siga para o pagamento"}
           </button>
         </div>
       </div>
