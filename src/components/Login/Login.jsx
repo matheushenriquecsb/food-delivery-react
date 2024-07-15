@@ -92,7 +92,7 @@ const Login = ({ setShowLogin }) => {
               name="name"
               onChange={onChangeHandler}
               value={data.name}
-              placeholder="Your Name"
+              placeholder="Seu Nome"
               required
             />
           )}
@@ -102,7 +102,7 @@ const Login = ({ setShowLogin }) => {
             name="email"
             onChange={onChangeHandler}
             value={data.email}
-            placeholder="Your Email"
+            placeholder="Seu Email"
             required
           />
           <input
@@ -110,7 +110,7 @@ const Login = ({ setShowLogin }) => {
             name="password"
             onChange={onChangeHandler}
             value={data.password}
-            placeholder="Your Password"
+            placeholder="Sua Senha"
             required
           />
         </div>
@@ -129,13 +129,13 @@ const Login = ({ setShowLogin }) => {
         </div>
         {currState === "Login" ? (
           <p>
-            Criar uma nova conta?
-            <span onClick={() => setCurrState("Sign Up")}>Clique aqui</span>
+            Ainda não possui um conta?
+            <span onClick={() => setCurrState("Sign Up")}> Clique aqui</span>
           </p>
         ) : (
           <p>
             Já possui uma conta?
-            <span onClick={() => setCurrState("Login")}>Faça login aqui</span>
+            <span onClick={() => setCurrState("Login")}> Faça login aqui</span>
           </p>
         )}
       </form>
