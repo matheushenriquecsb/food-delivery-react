@@ -125,11 +125,14 @@ const Login = ({ setShowLogin }) => {
         </button>
         <div className="login-condition">
           <input type="checkbox" required />
-          <p>Ao continuar, concordo com os termos de uso e política de privacidade</p>
+          <p>
+            Ao continuar, concordo com os termos de uso e política de
+            privacidade
+          </p>
         </div>
         {currState === "Login" ? (
           <p>
-            Ainda não possui um conta?
+            Ainda não possui uma conta?
             <span onClick={() => setCurrState("Sign Up")}> Clique aqui</span>
           </p>
         ) : (
